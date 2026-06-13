@@ -1,8 +1,17 @@
+import { Route, Routes } from 'react-router-dom';
+import Home from './pages/Home';
+import Login from './pages/Login';
+import Register from './pages/Register';
+
 function App() {
   return (
-    <>
-      <h1 className='text-9xl text-red-500 font-SFpro'>Test</h1>
-    </>
+    <div className='container dark:bg-black'>
+      <Routes>
+        <Route path='/' element={<Home />} />
+        <Route path='/register' element={<Register />} />
+        <Route path='/login' element={<Login />} />
+      </Routes>
+    </div>
   );
 }
 
