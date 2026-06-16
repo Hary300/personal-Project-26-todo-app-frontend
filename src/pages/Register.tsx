@@ -1,20 +1,19 @@
 import { Link } from 'react-router-dom';
 import Button from '../components/shared/Button';
-import { useForm, useWatch } from 'react-hook-form';
-
-type FormData = {
-  username: string;
-  email: string;
-  password: string;
-  confirmPassword: string;
-};
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { registerSchema, type RegisterFormData } from '../schemas/auth.schema';
 
 export default function Register() {
-  const { register, handleSubmit, formState, control } = useForm<FormData>();
-  const { errors } = formState;
-  const password = useWatch({ control, name: 'password' });
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<RegisterFormData>({
+    resolver: zodResolver(registerSchema),
+  });
 
-  const onSubmit = (data: FormData) => {
+  const onSubmit = (data: RegisterFormData) => {
     console.log(data);
   };
   return (
@@ -37,9 +36,7 @@ export default function Register() {
               id='username'
               placeholder='Username'
               className='peer focus:outline-0 focus:placeholder-transparent'
-              {...register('username', {
-                required: 'Username cannot be empty',
-              })}
+              {...register('username')}
             />
 
             <label
@@ -64,13 +61,7 @@ export default function Register() {
               id='email'
               placeholder='Email'
               className='peer focus:outline-0 focus:placeholder-transparent'
-              {...register('email', {
-                required: 'Email cannot be empty',
-                pattern: {
-                  value: /^\S+@\S+$/i,
-                  message: 'Email is not valid',
-                },
-              })}
+              {...register('email')}
             />
             <label
               htmlFor='email'
@@ -94,13 +85,7 @@ export default function Register() {
               id='password'
               placeholder='Password'
               className='peer focus:outline-0 focus:placeholder-transparent'
-              {...register('password', {
-                required: 'Password cannot be empty',
-                minLength: {
-                  value: 6,
-                  message: 'Min 6 characters',
-                },
-              })}
+              {...register('password')}
             />
             <label
               htmlFor='password'
@@ -124,11 +109,7 @@ export default function Register() {
               id='confirm-password'
               placeholder='Confirm Password'
               className='peer focus:outline-0 focus:placeholder-transparent'
-              {...register('confirmPassword', {
-                required: 'Confirm password cannot be empty',
-                validate: (value) =>
-                  value === password || 'Password does not match',
-              })}
+              {...register('confirmPassword')}
             />
             <label
               htmlFor='confirm-password'
@@ -147,7 +128,7 @@ export default function Register() {
         <div>
           <Button type='submit' title={'Submit'} />
         </div>
-        <p className='text-center lg:text-base text-neutral-'>
+        <p className='text-center lg:text-base'>
           Already have an account?{' '}
           <Link to='/login' className='font-bold text-sm text-primary'>
             Log in
