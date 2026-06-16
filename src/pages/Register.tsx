@@ -1,21 +1,34 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Button from '../components/shared/Button';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { registerSchema, type RegisterFormData } from '../schemas/auth.schema';
+import { sendDataRegister } from '../services/user.service';
 
 export default function Register() {
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    reset,
+    formState: { errors, isSubmitting },
   } = useForm<RegisterFormData>({
+    defaultValues: {
+      username: '',
+      email: '',
+      password: '',
+      confirmPassword: '',
+    },
     resolver: zodResolver(registerSchema),
   });
 
+  const navigate = useNavigate();
+
   const onSubmit = (data: RegisterFormData) => {
-    console.log(data);
+    sendDataRegister(data);
+    reset();
+    navigate('/login');
   };
+
   return (
     <div className='container px-3xl flex justify-center min-h-screen items-center'>
       <form className='flex flex-col gap-3xl' onSubmit={handleSubmit(onSubmit)}>
@@ -26,6 +39,7 @@ export default function Register() {
           Create your free account and start achieving more today
         </p>
 
+        {/* name  */}
         <div className='flex flex-col gap-1'>
           <div
             id='name-field'
@@ -51,6 +65,7 @@ export default function Register() {
           )}
         </div>
 
+        {/* email */}
         <div className='flex flex-col gap-1'>
           <div
             id='email-field'
@@ -75,6 +90,7 @@ export default function Register() {
           )}
         </div>
 
+        {/* password */}
         <div className='flex flex-col gap-1'>
           <div
             id='password-field'
@@ -99,6 +115,7 @@ export default function Register() {
           )}
         </div>
 
+        {/* confirm password */}
         <div className='flex flex-col gap-1'>
           <div
             id='confirm-password-field'
@@ -125,9 +142,11 @@ export default function Register() {
           )}
         </div>
 
+        {/* button submit */}
         <div>
-          <Button type='submit' title={'Submit'} />
+          <Button type='submit' title={'Submit'} isSubmitting={isSubmitting} />
         </div>
+
         <p className='text-center lg:text-base'>
           Already have an account?{' '}
           <Link to='/login' className='font-bold text-sm text-primary'>
