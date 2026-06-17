@@ -3,34 +3,53 @@ import Button from '../components/shared/Button';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { registerSchema, type RegisterFormData } from '../schemas/auth.schema';
-import { sendDataRegister } from '../services/user.service';
+import { toast } from 'sonner';
+import { sendDataRegister } from '@/services/user.service';
+import axios from 'axios';
 
 export default function Register() {
   const {
     register,
     handleSubmit,
-    reset,
+    // reset,
     formState: { errors, isSubmitting },
   } = useForm<RegisterFormData>({
     defaultValues: {
-      username: '',
-      email: '',
-      password: '',
-      confirmPassword: '',
+      username: 'BEN',
+      email: 'ben@mail.com',
+      password: 'kopipanas',
+      confirmPassword: 'kopipanas',
     },
     resolver: zodResolver(registerSchema),
   });
 
   const navigate = useNavigate();
 
-  const onSubmit = (data: RegisterFormData) => {
-    sendDataRegister(data);
-    reset();
-    navigate('/login');
+  const onSubmit = async (data: RegisterFormData) => {
+    try {
+      console.log(data);
+
+      await sendDataRegister(data);
+
+      toast.success('New account has been created. Please Login', {
+        position: 'top-center',
+      });
+      navigate('/login');
+    } catch (error) {
+      if (axios.isAxiosError(error)) {
+        console.dir(error);
+        toast.error(
+          `${error.response?.data.message}. Failed to create new account.`,
+          {
+            position: 'top-center',
+          }
+        );
+      }
+    }
   };
 
   return (
-    <div className='container px-3xl flex justify-center min-h-screen items-center'>
+    <div className='container-custom'>
       <form className='flex flex-col gap-3xl' onSubmit={handleSubmit(onSubmit)}>
         <h1 className='font-bold text-display-xs lg:text-display-sm'>
           Register
@@ -72,7 +91,7 @@ export default function Register() {
             className='flex flex-col-reverse border border-neutral-400 rounded-md py-md px-lg'
           >
             <input
-              type='text'
+              type='email'
               id='email'
               placeholder='Email'
               className='peer focus:outline-0 focus:placeholder-transparent'
@@ -144,9 +163,10 @@ export default function Register() {
 
         {/* button submit */}
         <div>
-          <Button type='submit' title={'Submit'} isSubmitting={isSubmitting} />
+          <Button type='submit' title='Submit' isSubmitting={isSubmitting} />
         </div>
 
+        {/* Have an account */}
         <p className='text-center lg:text-base'>
           Already have an account?{' '}
           <Link to='/login' className='font-bold text-sm text-primary'>

@@ -1,11 +1,25 @@
 {
   "register": [
     {
-      "username": "asd",
-      "email": "asdasd@asdasdads.com",
-      "password": "12345678",
-      "confirmPassword": "12345678",
+      "username": "BEN",
+      "email": "ben@mail.com",
+      "password": "kopipanas",
+      "confirmPassword": "kopipanas",
       "id": 1
+    },
+    {
+      "username": "BEN",
+      "email": "ben@mail.com",
+      "password": "kopipanas",
+      "confirmPassword": "kopipanas",
+      "id": 2
+    },
+    {
+      "username": "BEN",
+      "email": "ben@mail.com",
+      "password": "kopipanas",
+      "confirmPassword": "kopipanas",
+      "id": 3
     }
   ]
 }
