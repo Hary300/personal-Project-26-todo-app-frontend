@@ -1,11 +1,12 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
-import { loginSchema, type LoginFormData } from '../schemas/auth.schema';
-import { sendDataLogin } from '../services/user.service';
+import { loginSchema } from '../features/auth/schemas/auth.schema';
+import { sendDataLogin } from '../features/auth/services/auth.service';
 import { Link, useNavigate } from 'react-router-dom';
-import Button from '../components/shared/Button';
+import Button from '../components/Button';
 import { toast } from 'sonner';
 import axios from 'axios';
+import type { LoginFormData } from '@/features/auth/types/types';
 
 export default function Login() {
   const {
@@ -37,6 +38,7 @@ export default function Login() {
       }
     }
   };
+
   return (
     <div className='container-custom'>
       <form onSubmit={handleSubmit(onSubmit)} className='flex flex-col gap-3xl'>

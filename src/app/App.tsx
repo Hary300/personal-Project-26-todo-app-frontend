@@ -1,14 +1,14 @@
 import { Route, Routes } from 'react-router-dom';
-import Home from './pages/Home';
-import Login from './pages/Login';
-import Register from './pages/Register';
+import Home from '../pages/Home';
+import Login from '../pages/Login';
+import Register from '../pages/Register';
 import { Toaster } from 'sonner';
-import ProtectedRoute from './routes/ProtectedRoute';
+import ProtectedRoute from '../routes/ProtectedRoute';
 
 console.log('APP BOOT');
 function App() {
   return (
-    <div className='container dark:bg-black'>
+    <div className='dark:bg-black'>
       <Toaster />
       <Routes>
         <Route

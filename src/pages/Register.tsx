@@ -1,17 +1,17 @@
 import { Link, useNavigate } from 'react-router-dom';
-import Button from '../components/shared/Button';
+import Button from '../components/Button';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { registerSchema, type RegisterFormData } from '../schemas/auth.schema';
+import { registerSchema } from '../features/auth/schemas/auth.schema';
 import { toast } from 'sonner';
-import { sendDataRegister } from '@/services/user.service';
+import { sendDataRegister } from '@/features/auth/services/auth.service';
 import axios from 'axios';
+import type { RegisterFormData } from '@/features/auth/types/types';
 
 export default function Register() {
   const {
     register,
     handleSubmit,
-    // reset,
     formState: { errors, isSubmitting },
   } = useForm<RegisterFormData>({
     defaultValues: {
