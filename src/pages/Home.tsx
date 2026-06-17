@@ -6,7 +6,7 @@ export default function Home() {
 
   function handleLogoutClick() {
     localStorage.removeItem('token');
-    navigate('/Login');
+    navigate('/login');
   }
   return (
     <div>

@@ -31,8 +31,9 @@ export default function Login() {
       navigate('/');
     } catch (error) {
       if (axios.isAxiosError(error)) {
-        toast.error('Login failed');
-        console.log(error.response?.data.message);
+        toast.error('Incorrect email or password. Please try again.', {
+          position: 'top-center',
+        });
       }
     }
   };
