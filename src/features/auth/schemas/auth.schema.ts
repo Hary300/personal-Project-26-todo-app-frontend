@@ -35,6 +35,4 @@ export const loginSchema = z.object({
     .min(8, 'Username must be at least 8 characters'),
 });
 
-export type RegisterFormData = z.infer<typeof registerSchema>;
 
-export type LoginFormData = z.infer<typeof loginSchema>;

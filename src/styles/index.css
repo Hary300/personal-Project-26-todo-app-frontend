@@ -10,16 +10,14 @@
 ========================= */
 @font-face {
   font-family: 'SF Pro';
-  src: url('./assets/fonts/SF-Pro.woff2') format('woff2');
+  src: url() format('woff2');
 }
 
 @theme {
   /* =========================
      TYPOGRAPHY → FONT FAMILY
   ========================= */
-  --font-SFpro:
-    'SF Pro', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
-    sans-serif;
+  --font-SFpro: 'SF Pro', system-ui, 'Segoe UI', sans-serif;
 
   /* =========================
      TYPOGRAPHY → FONT WEIGHT
