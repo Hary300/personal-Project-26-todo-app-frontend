@@ -20,7 +20,7 @@ export default function AuthInputField<T extends FieldValues>({
     <div className='flex flex-col gap-1'>
       <div
         id={`${name}-field`}
-        className='flex flex-col-reverse border border-neutral-400 rounded-md py-md px-lg'
+        className='flex flex-col-reverse border rounded-md py-md px-lg'
       >
         <input
           type={type}

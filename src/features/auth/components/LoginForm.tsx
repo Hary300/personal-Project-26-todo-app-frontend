@@ -6,7 +6,7 @@ import type { LoginFormData } from '../types/types';
 import { sendDataLogin } from '../services/auth.service';
 import { toast } from 'sonner';
 import axios from 'axios';
-import Button from '@/components/Button';
+import Button from '@/components/ui/Button';
 import AuthInputField from './AuthInputField';
 
 export default function LoginForm() {
@@ -30,13 +30,11 @@ export default function LoginForm() {
       const token = result.data.token;
       localStorage.setItem('token', token);
       localStorage.setItem('data', JSON.stringify(result.data));
-      toast.success(result.message, { position: 'top-center' });
+      toast.success(result.message);
       navigate('/');
     } catch (error) {
       if (axios.isAxiosError(error)) {
-        toast.error('Incorrect email or password. Please try again.', {
-          position: 'top-center',
-        });
+        toast.error('Incorrect email or password. Please try again.');
       }
     }
   };

@@ -6,7 +6,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { sendDataRegister } from '../services/auth.service';
 import axios from 'axios';
 import { toast } from 'sonner';
-import Button from '@/components/Button';
+import Button from '@/components/ui/Button';
 import AuthInputField from './AuthInputField';
 
 export default function RegisterForm() {
@@ -32,18 +32,13 @@ export default function RegisterForm() {
 
       await sendDataRegister(data);
 
-      toast.success('New account has been created. Please Login', {
-        position: 'top-center',
-      });
+      toast.success('New account has been created. Please Login');
       navigate('/login');
     } catch (error) {
       if (axios.isAxiosError(error)) {
         console.dir(error);
         toast.error(
-          `${error.response?.data.message}. Failed to create new account.`,
-          {
-            position: 'top-center',
-          }
+          `${error.response?.data.message}. Failed to create new account.`
         );
       }
     }

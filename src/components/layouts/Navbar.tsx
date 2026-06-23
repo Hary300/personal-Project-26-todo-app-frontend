@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'sonner';
-import Button from '@/components/Button';
+import Button from '@/components/ui/Button';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -26,12 +26,12 @@ export default function Navbar() {
     setIsLoading(true);
     await new Promise((resolve) => setTimeout(resolve, 2000));
     setIsLoading(false);
-    toast.success('Logout successfully', { position: 'top-center' });
+    toast.success('Logout successfully');
     navigate('/login');
   }
 
   return (
-    <div className='h-15 border-b border-b-neutral-[#DEDCDC] flex justify-between px-xl lg:px-30 items-center'>
+    <div className='h-15 border-b flex justify-between px-xl lg:px-30 items-center'>
       <p className='font-bold font-cold text-display-xs lg:text-display-sm'>
         ToDo
       </p>

@@ -3,11 +3,14 @@ import { createRoot } from 'react-dom/client';
 import './styles/index.css';
 import App from './app/App.tsx';
 import { BrowserRouter } from 'react-router-dom';
+import { DarkProvider } from './contexts/theme/DarkProvider.tsx';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
+    <DarkProvider>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </DarkProvider>
   </StrictMode>
 );
