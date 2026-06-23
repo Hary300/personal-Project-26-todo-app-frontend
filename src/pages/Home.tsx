@@ -22,6 +22,7 @@ export default function Home() {
         type='button'
         title={`${isLoading ? 'Loading...' : 'Logout'}`}
         onClick={handleLogoutClick}
+        disabled={isLoading}
       />
     </div>
   );

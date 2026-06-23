@@ -5,7 +5,6 @@ import Register from '../pages/Register';
 import { Toaster } from 'sonner';
 import ProtectedRoute from '../routes/ProtectedRoute';
 
-console.log('APP BOOT');
 function App() {
   return (
     <div className='dark:bg-black'>

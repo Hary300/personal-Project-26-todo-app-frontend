@@ -89,7 +89,7 @@ export default function RegisterForm() {
 
       {/* button submit */}
       <div>
-        <Button type='submit' title='Submit' isSubmitting={isSubmitting} />
+        <Button type='submit' title='Submit' disabled={isSubmitting} />
       </div>
 
       {/* Have an account */}

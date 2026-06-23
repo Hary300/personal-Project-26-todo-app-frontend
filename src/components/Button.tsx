@@ -1,23 +1,23 @@
 type ButtonProps = {
   type: 'submit' | 'button';
   title: string;
-  isSubmitting?: boolean;
+  disabled?: boolean;
   onClick?: () => void;
 };
 export default function Button({
   type,
   title,
-  isSubmitting,
+  disabled,
   onClick,
 }: ButtonProps) {
   return (
     <button
       type={type}
       className='w-full text-white font-semibold text-sm p-md bg-primary rounded-md cursor-pointer disabled:bg-gray-400'
-      disabled={isSubmitting}
+      disabled={disabled}
       onClick={onClick}
     >
-      {type === 'submit' && isSubmitting ? 'Loading...' : title}
+      {type === 'submit' && disabled ? 'Loading...' : title}
     </button>
   );
 }

@@ -65,7 +65,7 @@ export default function LoginForm() {
 
       {/* button submit */}
       <div>
-        <Button type='submit' title='Login' isSubmitting={isSubmitting} />
+        <Button type='submit' title='Login' disabled={isSubmitting} />
       </div>
 
       {/* Have an account */}
