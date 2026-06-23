@@ -1,23 +1,29 @@
-type ButtonProps = {
-  type: 'submit' | 'button';
-  title: string;
-  disabled?: boolean;
-  onClick?: () => void;
+import { forwardRef, type ButtonHTMLAttributes } from 'react';
+
+type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
+  variant?: 'default' | 'logoutButton';
 };
-export default function Button({
-  type,
-  title,
-  disabled,
-  onClick,
-}: ButtonProps) {
-  return (
-    <button
-      type={type}
-      className='w-full text-white font-semibold text-sm p-md bg-primary rounded-md cursor-pointer disabled:bg-gray-400'
-      disabled={disabled}
-      onClick={onClick}
-    >
-      {type === 'submit' && disabled ? 'Loading...' : title}
-    </button>
-  );
-}
+
+const Button = forwardRef<HTMLButtonElement, ButtonProps>(
+  ({ variant = 'default', className = '', children, ...prop }, ref) => {
+    const baseStyle = 'w-full cursor-pointer';
+
+    const variantStyle = {
+      default:
+        'text-white font-semibold text-sm p-md bg-primary rounded-md disabled:bg-gray-400 cursor-pointer',
+      logoutButton: 'text-left',
+    };
+
+    return (
+      <button
+        ref={ref}
+        {...prop}
+        className={`${baseStyle} ${variantStyle[variant]} ${className}`}
+      >
+        {children}
+      </button>
+    );
+  }
+);
+
+export default Button;

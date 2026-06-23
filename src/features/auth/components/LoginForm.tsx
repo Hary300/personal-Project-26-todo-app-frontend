@@ -29,6 +29,7 @@ export default function LoginForm() {
       const result = await sendDataLogin(data);
       const token = result.data.token;
       localStorage.setItem('token', token);
+      localStorage.setItem('data', JSON.stringify(result.data));
       toast.success(result.message, { position: 'top-center' });
       navigate('/');
     } catch (error) {
@@ -65,7 +66,9 @@ export default function LoginForm() {
 
       {/* button submit */}
       <div>
-        <Button type='submit' title='Login' disabled={isSubmitting} />
+        <Button type='submit' disabled={isSubmitting}>
+          {isSubmitting ? 'Loading...' : 'Login'}
+        </Button>
       </div>
 
       {/* Have an account */}

@@ -89,7 +89,9 @@ export default function RegisterForm() {
 
       {/* button submit */}
       <div>
-        <Button type='submit' title='Submit' disabled={isSubmitting} />
+        <Button type='submit' disabled={isSubmitting}>
+          {isSubmitting ? 'Loading...' : 'Submit'}
+        </Button>
       </div>
 
       {/* Have an account */}

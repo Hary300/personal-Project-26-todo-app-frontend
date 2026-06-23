@@ -3,7 +3,7 @@ import type { FieldPath, FieldValues, UseFormRegister } from 'react-hook-form';
 type AuthInputFieldProps<T extends FieldValues> = {
   type: 'text' | 'email' | 'password';
   name: FieldPath<T>;
-  errorMessage: string;
+  errorMessage?: string;
   register: UseFormRegister<T>;
 };
 
