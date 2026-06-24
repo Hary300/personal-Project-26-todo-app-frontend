@@ -28,8 +28,6 @@ export default function RegisterForm() {
 
   const onSubmit = async (data: RegisterFormData) => {
     try {
-      console.log(data);
-
       await sendDataRegister(data);
 
       toast.success('New account has been created. Please Login');
