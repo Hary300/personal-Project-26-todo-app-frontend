@@ -14,10 +14,7 @@ function App() {
   }, [isDark]);
   return (
     <div>
-      <Toaster
-        position='top-center'
-        toastOptions={{ classNames: { toast: 'bg-red-500' } }}
-      />
+      <Toaster position='top-center' />
       <Routes>
         <Route
           path='/'

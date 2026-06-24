@@ -184,7 +184,3 @@
 .container-custom {
   @apply container px-3xl flex justify-center min-h-screen items-center m-auto;
 }
-
-.toast-bg {
-  @apply bg-red-500;
-}
