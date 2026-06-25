@@ -6,8 +6,8 @@ import type { LoginFormData } from '../types';
 import { sendDataLogin } from '../services/auth.service';
 import { toast } from 'sonner';
 import axios from 'axios';
-import Button from '@/components/ui/Button';
-import AuthInputField from './AuthInputField';
+import Button from '@/components/ui/AppButton';
+import AuthInputField from './ui/AuthInputField';
 
 export default function LoginForm() {
   const {

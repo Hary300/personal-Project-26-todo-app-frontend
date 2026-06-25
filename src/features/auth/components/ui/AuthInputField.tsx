@@ -34,7 +34,7 @@ export default function AuthInputField<T extends FieldValues>({
           htmlFor={name}
           className='hidden peer-focus:block leading-4 text-xs text-neutral-600'
         >
-          Username
+          {label}
         </label>
       </div>
       {errorMessage && (

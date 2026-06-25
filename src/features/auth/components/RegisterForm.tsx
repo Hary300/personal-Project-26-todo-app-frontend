@@ -6,8 +6,8 @@ import { Link, useNavigate } from 'react-router-dom';
 import { sendDataRegister } from '../services/auth.service';
 import axios from 'axios';
 import { toast } from 'sonner';
-import Button from '@/components/ui/Button';
-import AuthInputField from './AuthInputField';
+import Button from '@/components/ui/AppButton';
+import AuthInputField from './ui/AuthInputField';
 
 export default function RegisterForm() {
   const {
