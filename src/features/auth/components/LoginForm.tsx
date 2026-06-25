@@ -2,7 +2,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import { loginSchema } from '../schemas/auth.schema';
 import { Link, useNavigate } from 'react-router-dom';
-import type { LoginFormData } from '../types/types';
+import type { LoginFormData } from '../types';
 import { sendDataLogin } from '../services/auth.service';
 import { toast } from 'sonner';
 import axios from 'axios';
