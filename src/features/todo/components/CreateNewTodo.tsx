@@ -40,11 +40,10 @@ export default function CreateNewTodo({
   const [isSelectOpen, setIsSelectOpen] = useState(false);
 
   const onSubmit = (data: TodoData) => {
-    console.log('test');
     const payload = { ...data, date: data.date.toISOString() };
+    console.log(data);
     onOpenChange(false);
-    console.log(payload);
-    createNewTodo(data);
+    createNewTodo(payload);
     reset();
   };
 

@@ -12,6 +12,7 @@ function App() {
   useEffect(() => {
     document.documentElement.classList.toggle('dark', isDark);
   }, [isDark]);
+
   return (
     <div>
       <Toaster position='top-center' />

@@ -2,10 +2,15 @@ import axios from 'axios';
 import type { PriorityLevel, TodoData } from '../types';
 import { api } from './todo.api';
 
+type CreateNewTodoRequest = Omit<TodoData, 'date'> & {
+  date: string;
+};
+
 // CREATE
-export async function createNewTodo(payload: TodoData) {
+export async function createNewTodo(payload: CreateNewTodoRequest) {
   try {
     const result = await api.post('/todos', payload);
+    console.log(result.data);
     return result.data;
   } catch (error) {
     if (axios.isAxiosError(error)) console.log(error.response?.data);
