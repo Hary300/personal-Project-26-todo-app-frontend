@@ -10,6 +10,7 @@ import SelectPriority from './ui/SelectPriority';
 import { XIcon } from 'lucide-react';
 import { Dialog as DialogPrimitive } from 'radix-ui';
 import InputDate from './ui/InputDate';
+import { createNewTodo } from '../services/todo.service';
 
 type CreateNewTodoProps = {
   isOpen: boolean;
@@ -40,8 +41,10 @@ export default function CreateNewTodo({
 
   const onSubmit = (data: TodoData) => {
     console.log('test');
+    const payload = { ...data, date: data.date.toISOString() };
     onOpenChange(false);
-    console.log(data);
+    console.log(payload);
+    createNewTodo(data);
     reset();
   };
 
